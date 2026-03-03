@@ -128,7 +128,7 @@ export default function Home() {
                     </p>
                     <div className={styles.ctaBtns}>
                         <a href="#send" className={styles.ctaBtn}>Try It Now</a>
-                        <a href="https://github.com" target="_blank" rel="noreferrer" className={styles.ctaBtnOutline}>
+                        <a href="https://github.com/r0hansaxena/Remyra" target="_blank" rel="noreferrer" className={styles.ctaBtnOutline}>
                             View Source
                         </a>
                     </div>
