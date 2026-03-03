@@ -1,0 +1,318 @@
+.section {
+    padding: var(--space-2xl) 0;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-top: -12px;
+    margin-bottom: var(--space-xl);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: var(--space-xl);
+    align-items: start;
+}
+
+.formCard {
+    padding: var(--space-xl);
+    animation: fadeInUp 0.4s ease both;
+}
+
+.formHeader {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-xl);
+}
+
+.formHeader h3 {
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.formIcon {
+    font-size: 1.3rem;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-card-hover);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-none);
+}
+
+.formBody {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.tokenSelect {
+    display: flex;
+    gap: var(--space-sm);
+}
+
+.tokenOption {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    padding: 10px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-none);
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.tokenOption:hover {
+    border-color: var(--text-primary);
+    color: var(--text-primary);
+}
+
+.tokenActive {
+    background: var(--color-pink);
+    border-color: var(--color-pink);
+    color: var(--text-inverse);
+}
+
+.amountWrap {
+    position: relative;
+}
+
+.amountPrefix {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.amountInput {
+    padding-left: 32px !important;
+    font-size: 1.15rem !important;
+    font-weight: 700 !important;
+    font-family: var(--font-mono) !important;
+}
+
+.sendBtn {
+    width: 100%;
+    padding: 14px var(--space-xl);
+    font-size: 0.9rem;
+    margin-top: var(--space-sm);
+}
+
+.spinner {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Right Column */
+.rightCol {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.feeCard {
+    padding: var(--space-xl);
+    animation: fadeInUp 0.4s ease 0.1s both;
+}
+
+.feeHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-lg);
+}
+
+.feeHeader h3 {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.feeBadge {
+    padding: 3px 10px;
+    background: var(--color-pink);
+    color: var(--text-inverse);
+    font-size: 0.75rem;
+    font-weight: 700;
+    font-family: var(--font-mono);
+}
+
+.feeRows {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.feeRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+}
+
+.feeValue {
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+.feeValueGreen {
+    color: var(--color-accent-green);
+    font-weight: 700;
+}
+
+.feeTotal {
+    padding-top: var(--space-md);
+    border-top: 1px dashed var(--border-light);
+    margin-top: var(--space-sm);
+}
+
+.feeValueLarge {
+    font-family: var(--font-mono);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.savingsBox {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+    padding: var(--space-md);
+    background: var(--bg-card-hover);
+    border: 1px dashed var(--color-accent-green);
+}
+
+.savingsIcon {
+    font-size: 1.3rem;
+}
+
+.savingsTitle {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--color-accent-green);
+}
+
+.savingsDesc {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+/* Tech Card */
+.techCard {
+    padding: var(--space-lg);
+    animation: fadeInUp 0.4s ease 0.2s both;
+}
+
+.techTitle {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-bottom: var(--space-md);
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.techBadges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+}
+
+.techBadge {
+    padding: 5px 10px;
+    background: var(--bg-card-hover);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-none);
+    font-size: 0.72rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeInUp 0.2s ease;
+}
+
+.modalContent {
+    max-width: 420px;
+    width: 90%;
+    padding: var(--space-xl);
+    text-align: center;
+    background: var(--bg-card);
+    border: var(--border-dashed);
+}
+
+.modalIcon {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-md);
+}
+
+.modalTitle {
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: var(--space-lg);
+}
+
+.modalDetails {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    text-align: left;
+}
+
+.modalRow {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+}
+
+.modalRow span:last-child {
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
