@@ -19,8 +19,8 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" className={spaceMono.variable}>
-            <body>
+        <html lang="en" suppressHydrationWarning>
+            <body className={spaceMono.variable} suppressHydrationWarning>
                 {children}
             </body>
         </html>

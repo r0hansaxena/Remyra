@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import SendRemittance from '../components/SendRemittance';
 import { useWallet } from '../hooks/useWallet';
@@ -7,6 +8,15 @@ import styles from './App.module.css';
 
 export default function Home() {
     const wallet = useWallet();
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    if (!mounted) {
+        return <div style={{ background: '#f5f5f5', minHeight: '100vh' }} />;
+    }
 
     return (
         <>
