@@ -8,3 +8,5 @@ typechain
 typechain-types
 frontend/node_modules
 frontend/dist
+frontend/.next
+.next

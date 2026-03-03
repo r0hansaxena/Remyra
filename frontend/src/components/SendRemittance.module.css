@@ -65,7 +65,7 @@
     gap: var(--space-sm);
     padding: 10px;
     background: var(--bg-card);
-    border: 1px solid var(--border-light);
+    border: 2px solid var(--border-light);
     border-radius: var(--radius-none);
     color: var(--text-secondary);
     font-family: var(--font-mono);
@@ -80,10 +80,12 @@
     color: var(--text-primary);
 }
 
-.tokenActive {
+.tokenActive,
+.tokenActive:hover {
     background: var(--color-pink);
     border-color: var(--color-pink);
     color: var(--text-inverse);
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
 }
 
 .amountWrap {
@@ -162,6 +164,7 @@
     font-size: 0.75rem;
     font-weight: 700;
     font-family: var(--font-mono);
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
 }
 
 .feeRows {

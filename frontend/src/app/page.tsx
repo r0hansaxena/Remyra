@@ -1,9 +1,11 @@
-import Header from './components/Header';
-import SendRemittance from './components/SendRemittance';
-import { useWallet } from './hooks/useWallet';
+"use client";
+
+import Header from '../components/Header';
+import SendRemittance from '../components/SendRemittance';
+import { useWallet } from '../hooks/useWallet';
 import styles from './App.module.css';
 
-export default function App() {
+export default function Home() {
     const wallet = useWallet();
 
     return (
@@ -12,8 +14,12 @@ export default function App() {
 
             {/* Hero */}
             <section className={styles.hero}>
+                <div className={styles.heroAccent}></div>
+                <div className={styles.heroCircle}></div>
                 <div className={styles.heroInner}>
-                    <h1 className={styles.heroTitle}>Remyra</h1>
+                    <h1 className={styles.heroTitle}>
+                        Secure <span>Remittance</span>
+                    </h1>
                     <p className={styles.heroSub}>
                         Cross-chain stablecoin remittances on Polkadot.
                         Send money globally with sub-1% fees, instant

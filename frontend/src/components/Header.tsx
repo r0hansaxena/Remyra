@@ -1,6 +1,13 @@
+"use client";
+
+import { WalletState } from '../hooks/useWallet';
 import styles from './Header.module.css';
 
-export default function Header({ wallet }) {
+interface HeaderProps {
+    wallet: WalletState;
+}
+
+export default function Header({ wallet }: HeaderProps) {
     const { isConnected, shortAddress, connectWallet, disconnectWallet, isConnecting } = wallet;
 
     return (

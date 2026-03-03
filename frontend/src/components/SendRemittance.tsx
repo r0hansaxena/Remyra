@@ -1,15 +1,34 @@
+"use client";
+
 import { useState } from 'react';
-import { TOKENS, DEST_CHAINS, CORRIDORS, FEE_COMPARISON } from '../constants';
+import { TOKENS, DEST_CHAINS, CORRIDORS, Corridor } from '../constants';
+import { WalletState } from '../hooks/useWallet';
 import styles from './SendRemittance.module.css';
 
-export default function SendRemittance({ wallet }) {
+interface SendRemittanceProps {
+    wallet: WalletState;
+}
+
+interface TxResult {
+    id: number;
+    amount: string;
+    token: string;
+    recipient: string;
+    destCurrency: string;
+    fee: string;
+    convertedAmount: string;
+    status: string;
+    timestamp: string;
+}
+
+export default function SendRemittance({ wallet }: SendRemittanceProps) {
     const [token, setToken] = useState('USDT');
     const [amount, setAmount] = useState('');
     const [recipient, setRecipient] = useState('');
     const [destChain, setDestChain] = useState(0);
     const [corridor, setCorridor] = useState('INR');
     const [sending, setSending] = useState(false);
-    const [txResult, setTxResult] = useState(null);
+    const [txResult, setTxResult] = useState<TxResult | null>(null);
 
     const selectedCorridor = CORRIDORS.find(c => c.to === corridor) || CORRIDORS[0];
     const fee = amount ? (parseFloat(amount) * 0.003).toFixed(2) : '0.00';
@@ -66,6 +85,7 @@ export default function SendRemittance({ wallet }) {
                                 {TOKENS.map(t => (
                                     <button
                                         key={t.symbol}
+                                        type="button"
                                         className={`${styles.tokenOption} ${token === t.symbol ? styles.tokenActive : ''}`}
                                         onClick={() => setToken(t.symbol)}
                                     >
@@ -138,6 +158,7 @@ export default function SendRemittance({ wallet }) {
 
                         {/* Send Button */}
                         <button
+                            type="button"
                             className={`btn btn-primary ${styles.sendBtn}`}
                             onClick={handleSend}
                             disabled={sending || !amount}
@@ -226,7 +247,7 @@ export default function SendRemittance({ wallet }) {
                                 <span>Time</span><span>{txResult.timestamp}</span>
                             </div>
                         </div>
-                        <button className="btn btn-primary" onClick={() => setTxResult(null)} style={{ width: '100%', marginTop: '16px' }}>
+                        <button type="button" className="btn btn-primary" onClick={() => setTxResult(null)} style={{ width: '100%', marginTop: '16px' }}>
                             Done
                         </button>
                     </div>

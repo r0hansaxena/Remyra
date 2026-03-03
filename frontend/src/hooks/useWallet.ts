@@ -1,17 +1,38 @@
 import { useState, useEffect, useCallback } from 'react';
-import { BrowserProvider } from 'ethers';
-import { NETWORKS, DEFAULT_NETWORK } from '../constants';
+import { BrowserProvider, JsonRpcSigner } from 'ethers';
+import { NETWORKS } from '../constants';
 
-export function useWallet() {
-    const [account, setAccount] = useState(null);
-    const [provider, setProvider] = useState(null);
-    const [signer, setSigner] = useState(null);
-    const [chainId, setChainId] = useState(null);
+// Add type for window.ethereum
+declare global {
+    interface Window {
+        ethereum?: any;
+    }
+}
+
+export interface WalletState {
+    account: string | null;
+    shortAddress: string;
+    provider: BrowserProvider | null;
+    signer: JsonRpcSigner | null;
+    chainId: number | null;
+    isConnecting: boolean;
+    error: string | null;
+    connectWallet: () => Promise<void>;
+    disconnectWallet: () => void;
+    switchNetwork: (networkKey: string) => Promise<void>;
+    isConnected: boolean;
+}
+
+export function useWallet(): WalletState {
+    const [account, setAccount] = useState<string | null>(null);
+    const [provider, setProvider] = useState<BrowserProvider | null>(null);
+    const [signer, setSigner] = useState<JsonRpcSigner | null>(null);
+    const [chainId, setChainId] = useState<number | null>(null);
     const [isConnecting, setIsConnecting] = useState(false);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState<string | null>(null);
 
     const connectWallet = useCallback(async () => {
-        if (!window.ethereum) {
+        if (typeof window === 'undefined' || !window.ethereum) {
             setError('MetaMask not detected. Please install MetaMask.');
             return;
         }
@@ -29,7 +50,7 @@ export function useWallet() {
             setSigner(walletSigner);
             setAccount(accounts[0]);
             setChainId(Number(network.chainId));
-        } catch (err) {
+        } catch (err: any) {
             setError(err.message || 'Failed to connect wallet');
         } finally {
             setIsConnecting(false);
@@ -43,8 +64,8 @@ export function useWallet() {
         setChainId(null);
     }, []);
 
-    const switchNetwork = useCallback(async (networkKey) => {
-        if (!window.ethereum) return;
+    const switchNetwork = useCallback(async (networkKey: string) => {
+        if (typeof window === 'undefined' || !window.ethereum) return;
 
         const network = NETWORKS[networkKey];
         if (!network) return;
@@ -54,7 +75,7 @@ export function useWallet() {
                 method: 'wallet_switchEthereumChain',
                 params: [{ chainId: network.chainId }],
             });
-        } catch (switchError) {
+        } catch (switchError: any) {
             if (switchError.code === 4902) {
                 await window.ethereum.request({
                     method: 'wallet_addEthereumChain',
@@ -72,9 +93,9 @@ export function useWallet() {
 
     // Listen for account and chain changes
     useEffect(() => {
-        if (!window.ethereum) return;
+        if (typeof window === 'undefined' || !window.ethereum) return;
 
-        const handleAccountsChanged = (accounts) => {
+        const handleAccountsChanged = (accounts: string[]) => {
             if (accounts.length === 0) {
                 disconnectWallet();
             } else {
@@ -82,7 +103,7 @@ export function useWallet() {
             }
         };
 
-        const handleChainChanged = (chainIdHex) => {
+        const handleChainChanged = (chainIdHex: string) => {
             setChainId(Number(chainIdHex));
             window.location.reload();
         };

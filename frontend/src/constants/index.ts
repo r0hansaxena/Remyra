@@ -1,7 +1,15 @@
 // Remyra Contract ABIs and Addresses
 // These are populated after deployment
 
-export const NETWORKS = {
+export interface NetworkConfig {
+    chainId: string;
+    chainName: string;
+    rpcUrls: string[];
+    nativeCurrency: { name: string; symbol: string; decimals: number };
+    blockExplorerUrls?: string[];
+}
+
+export const NETWORKS: Record<string, NetworkConfig> = {
     polkadotHub: {
         chainId: '0xD0A',
         chainName: 'Polkadot Hub',
@@ -35,13 +43,26 @@ export const CONTRACTS = {
 };
 
 // Supported tokens
-export const TOKENS = [
+export interface Token {
+    symbol: string;
+    name: string;
+    decimals: number;
+    icon: string;
+}
+
+export const TOKENS: Token[] = [
     { symbol: 'USDT', name: 'Tether USD', decimals: 6, icon: '$' },
     { symbol: 'USDC', name: 'USD Coin', decimals: 6, icon: '¢' },
 ];
 
 // Destination chains (parachains)
-export const DEST_CHAINS = [
+export interface DestChain {
+    id: number;
+    name: string;
+    icon: string;
+}
+
+export const DEST_CHAINS: DestChain[] = [
     { id: 0, name: 'Polkadot Hub (Same Chain)', icon: '●' },
     { id: 2004, name: 'Moonbeam', icon: '◐' },
     { id: 2006, name: 'Astar', icon: '★' },
@@ -50,7 +71,14 @@ export const DEST_CHAINS = [
 ];
 
 // Remittance corridors for FX display
-export const CORRIDORS = [
+export interface Corridor {
+    from: string;
+    to: string;
+    country: string;
+    rate: number;
+}
+
+export const CORRIDORS: Corridor[] = [
     { from: 'USD', to: 'INR', country: 'IN — India', rate: 83.50 },
     { from: 'USD', to: 'PHP', country: 'PH — Philippines', rate: 56.20 },
     { from: 'USD', to: 'MXN', country: 'MX — Mexico', rate: 17.15 },
@@ -62,7 +90,17 @@ export const CORRIDORS = [
 ];
 
 // Fee comparison data (for the "wow" dashboard)
-export const FEE_COMPARISON = [
+export interface FeeComparison {
+    provider: string;
+    fee: number;
+    feePercent: number;
+    speed: string;
+    color: string;
+    logo: string;
+    isUs?: boolean;
+}
+
+export const FEE_COMPARISON: FeeComparison[] = [
     {
         provider: 'Western Union',
         fee: 53,
