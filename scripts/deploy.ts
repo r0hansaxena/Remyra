@@ -1,6 +1,7 @@
-const hre = require("hardhat");
+import hre from "hardhat";
+import fs from "fs";
 
-async function main() {
+async function main(): Promise<void> {
     const [deployer] = await hre.ethers.getSigners();
     console.log("Deploying contracts with:", deployer.address);
     console.log("Account balance:", (await hre.ethers.provider.getBalance(deployer.address)).toString());
@@ -66,7 +67,6 @@ async function main() {
     console.log(`  Remyra:    ${remyraAddress}`);
     console.log("========================================");
 
-    const fs = require("fs");
     const deployment = {
         network: hre.network.name,
         contracts: {
@@ -85,7 +85,7 @@ async function main() {
 
 main()
     .then(() => process.exit(0))
-    .catch((error) => {
+    .catch((error: Error) => {
         console.error(error);
         process.exit(1);
     });

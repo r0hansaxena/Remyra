@@ -1,9 +1,17 @@
-const { expect } = require("chai");
-const { ethers } = require("hardhat");
+import { expect } from "chai";
+import { ethers } from "hardhat";
+import { HardhatEthersSigner } from "@nomicfoundation/hardhat-ethers/signers";
 
 describe("Remyra", function () {
-    let mockUSDT, mockUSDC, fxOracle, remyra;
-    let owner, sender, recipient;
+    /* eslint-disable @typescript-eslint/no-explicit-any */
+    let mockUSDT: any;
+    let mockUSDC: any;
+    let fxOracle: any;
+    let remyra: any;
+    /* eslint-enable @typescript-eslint/no-explicit-any */
+    let owner: HardhatEthersSigner;
+    let sender: HardhatEthersSigner;
+    let recipient: HardhatEthersSigner;
 
     beforeEach(async function () {
         [owner, sender, recipient] = await ethers.getSigners();
