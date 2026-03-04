@@ -313,6 +313,122 @@
     font-weight: 700;
 }
 
+/* Token Label Row */
+.tokenLabelRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.balanceLabel {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+}
+
+.balanceLabel strong {
+    color: var(--text-primary);
+}
+
+/* Faucet Button */
+.faucetBtn {
+    width: 100%;
+    padding: 8px 12px;
+    margin-top: var(--space-sm);
+    background: transparent;
+    border: 1px dashed var(--border-light);
+    border-radius: var(--radius-none);
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.faucetBtn:hover {
+    border-color: var(--color-accent-green);
+    color: var(--color-accent-green);
+    background: rgba(0, 200, 100, 0.05);
+}
+
+.faucetBtn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Error Box */
+.errorBox {
+    padding: var(--space-md);
+    background: rgba(220, 40, 40, 0.06);
+    border: 1px solid rgba(220, 40, 40, 0.25);
+    color: #c92a2a;
+    font-size: 0.82rem;
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+/* Step Progress */
+.stepProgress {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: var(--space-md) 0;
+}
+
+.stepDot {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border: 2px solid var(--border-light);
+    border-radius: 50%;
+    color: var(--text-secondary);
+    background: var(--bg-card);
+}
+
+.stepActive {
+    border-color: var(--color-pink);
+    color: var(--color-pink);
+    background: var(--bg-card-hover);
+}
+
+.stepDone {
+    border-color: var(--color-accent-green);
+    color: var(--color-accent-green);
+    background: rgba(0, 200, 100, 0.08);
+}
+
+.stepLabel {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stepLine {
+    width: 32px;
+    height: 2px;
+    background: var(--border-light);
+}
+
+/* Tx Hash */
+.txHash {
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    transition: color var(--transition-fast);
+}
+
+.txHash:hover {
+    color: var(--color-pink) !important;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .grid {
